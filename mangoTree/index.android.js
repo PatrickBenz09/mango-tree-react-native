@@ -11,22 +11,24 @@ import {
   Text,
   View
 } from 'react-native';
+import { Provider } from 'react-redux'
+import { StackNavigator } from 'react-navigation'
+
+import Store from './src/stores'
+import Home from './src/screens/Home'
+
+const AppNavigator = StackNavigator({
+  HomeScreen: { screen: Home }
+})
 
 export default class mangoTree extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Provider store={ Store }>
+        <View style={styles.container}>
+          <AppNavigator />
+        </View>
+      </Provider>
     );
   }
 }
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#1abc9c',
   },
   welcome: {
     fontSize: 20,

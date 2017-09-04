@@ -1,6 +1,6 @@
 const initialState = {
   name: '',
-  tree: ''
+  treeName: ''
 }
 
 export default (state = initialState, action) => {
@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
   switch (action.type)
   {
     case "INPUT_NAME":
-      return state
+      return { ...state, name: action.payload.name, treeName: action.payload.treeName }
 
     default:
       return state

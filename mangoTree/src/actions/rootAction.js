@@ -10,10 +10,10 @@ export const grow = (age, height, fruits, healthyStatus) => ({
   }
 })
 
-export const input_name = (name, treeName) => {
+export const submit_the_form = (name, treeName) => ({
   type: 'INPUT_NAME',
   payload: {
     name: name,
     treeName: treeName
   }
-}
+})

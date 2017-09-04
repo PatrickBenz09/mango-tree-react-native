@@ -9,13 +9,19 @@ class Mango extends Component {
 
   render () {
     <View>
-      <Text>Mango</Text>
+      <Text>this.props.name</Text>
+      <Text>this.props.treeName</Text>
     </View>
   }
 }
 
 const mapStateToProps = (state) => ({
-  age: state.age
+  name: state.userStore.name,
+  treeName: state.userStore.treeName
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  //
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mango)
