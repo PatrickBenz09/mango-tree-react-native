@@ -16,40 +16,23 @@ import { StackNavigator } from 'react-navigation'
 
 import Store from './src/stores'
 import Home from './src/screens/Home'
+import Mango from './src/screens/Mango'
+import Test from './src/screens/Test'
 
 const AppNavigator = StackNavigator({
-  HomeScreen: { screen: Home }
+  MangoScreen: { screen: Mango },
+  HomeScreen: { screen: Home },
+  Test: {screen: Test}
 })
 
 export default class mangoTree extends Component {
   render() {
     return (
       <Provider store={ Store }>
-        <View style={styles.container}>
-          <AppNavigator />
-        </View>
+        <AppNavigator />
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1abc9c',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('mangoTree', () => mangoTree);

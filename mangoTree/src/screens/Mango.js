@@ -1,27 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text } from 'react-native'
+import { StyleSheet, View, Text, Button } from 'react-native'
 
 class Mango extends Component {
   constructor(props) {
     super(props)
   }
 
+  static navigationOptions = {
+    title: 'Mango Tree Simulation',
+    header: null
+  }
+
   render () {
-    <View>
-      <Text>this.props.name</Text>
-      <Text>this.props.treeName</Text>
-    </View>
+    return (
+      <View style={ styles.container }>
+        <Text>Hi, { this.props.name }</Text>
+        <Text>This is { this.props.treeName }</Text>
+        <Text>He is { this.props.age } year(s) old</Text>
+        <Button
+          title="Simulate"
+        />
+        <Button
+          title="Harvest Mango"
+        />
+      </View>
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   name: state.userStore.name,
-  treeName: state.userStore.treeName
+  treeName: state.userStore.treeName,
+  age: state.mangoStore.age
 })
 
 const mapDispatchToProps = (dispatch) => ({
   //
 })
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#1abc9c',
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mango)

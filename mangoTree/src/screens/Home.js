@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
 
 import { submit_the_form } from '../actions/rootAction'
 
@@ -9,23 +9,14 @@ class Home extends Component {
     super(props)
 
     this.state = {
-      name: '',
+      name: 'sda',
       treeName: ''
     }
   }
 
-  handleUserName (e) {
-    this.setState({
-      name: e.target.value,
-      treeName: this.state.treeName
-    })
-  }
-
-  handleTreeName (e) {
-    this.setState({
-      name: this.state.name,
-      treeName: e.target.value
-    })
+  static navigationOptions = {
+    title: 'Mango User',
+    header: null
   }
 
   submitForm () {
@@ -33,25 +24,32 @@ class Home extends Component {
   }
 
   render () {
-    <View style>
-      <Text>Welcome</Text>
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          placeholder="Your name"
-          onChangeText={(e) => this.handleUserName({e})}
-        />
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          placeholder="Give your tree a name"
-          onChangeText={(e) => this.handleTreeName({e})}
-        />
-        <Button
-          onPress={ () => this.submitForm() }
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-    </View>
+    const { navigate } = this.props.navigation
+    return(
+      <View style={ styles.container }>
+        <Text>Welcome {this.state.name}</Text>
+        <Text>Welcome {this.state.treeName}</Text>
+          <TextInput
+            style={{height: 40, width: 200, borderColor: 'gray'}}
+            placeholder="Your name"
+            onChangeText={ (name) => this.setState({ name }) }
+          />
+          <TextInput
+            style={{height: 40, width: 200, borderColor: 'gray'}}
+            placeholder="Give your tree a name"
+            onChangeText={ (treeName) => this.setState({ treeName }) }
+          />
+          <Button
+            onPress={ () => {
+              navigate('MangoScreen')
+              this.submitForm()
+            }}
+            title="Learn More"
+            color="#841584"
+            accessibilityLabel="Learns more about this purple button"
+          />
+      </View>
+    )
   }
 }
 
